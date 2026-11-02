@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Special Crush ❤️</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Pyidaungsu', sans-serif;
+            margin: 0;
+            overflow: hidden;
+        }
+        .card {
+            background: white;
+            padding: 35px;
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            text-align: center;
+            max-width: 420px;
+            width: 90%;
+            position: relative;
+        }
+        .icon-box {
+            font-size: 60px;
+            margin-bottom: 15px;
+            animation: bounce 1s infinite alternate;
+        }
+        @keyframes bounce {
+            to { transform: scale(1.2); }
+        }
+        h1 {
+            color: #ff4757;
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+        p {
+            color: #57606f;
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            position: relative;
+        }
+        button {
+            padding: 10px 25px;
+            font-size: 15px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+        .btn-yes {
+            background-color: #ff4757;
+            color: white;
+        }
+        .btn-no {
+            background-color: #747d8c;
+            color: white;
+            position: relative;
+        }
+        .next-btn {
+            background-color: #ff4757;
+            color: white;
+            width: 100%;
+            padding: 12px;
+            border-radius: 25px;
+            font-size: 16px;
+        }
+        .hidden-section {
+            display: none;
+        }
+        .letter-content {
+            display: none;
+            text-align: left;
+            font-size: 14px;
+            color: #2d3436;
+            line-height: 1.6;
+            background: #fff0f5;
+            padding: 20px;
+            border-radius: 15px;
+            border: 2px dashed #ff7675;
+            max-height: 280px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <!-- အပိုင်း ၀ - ပထမဆုံး ပေါ်မည့် အသိပေးချက် မျက်နှာပြင် -->
+        <div id="welcome-section">
+            <div class="icon-box">🥺</div>
+            <h1>မစခင် အကုန်ဖတ်ပေးဖို့ တောင်းဆိုချင်ပါတယ်နော်... 🙏</h1>
+            <p>
+                ဒီထဲမှာ ရေးထားတာတွေကို စိတ်ရှည်ရှည်နဲ့ အဆုံးထိ ဖတ်ပေးပါနော်... 🌸
+            </p>
+            <button class="next-btn" onclick="goToIntro()">ဖတ်မယ် 💌</button>
+        </div>
+
+        <!-- အပိုင်း ၁ - အစမှာ အချစ်ဖွဲ့တာနဲ့ အလှအပကို ဖွဲ့ပြမယ့် နေရာ -->
+        <div id="intro-section" class="hidden-section">
+            <div class="icon-box">💖</div>
+            <h1>ချစ်ရပါသော ကိုယ့်ရဲ့ သံစဉ် လေး... ❤️</h1>
+            <p>
+                မင်းက အရမ်းလည်း လှတယ်။ ပြုံးလိုက်တိုင်း ပေါ်လာတဲ့ အပြုံးလေးတွေက ကိုယ့်ရဲ့ နှလုံးသားထဲမှာ စွဲလမ်းမိနေတာပဲ။  
+                မင်းကို အရမ်းမြတ်နိုးပြီး တန်ဖိုးထားပါတယ် 🌸✨
+            </p>
+            <button class="next-btn" onclick="startQuestions()">ဆက်လက်ကြည့်ရန် 💌</button>
+        </div>
+
+        <!-- အပိုင်း ၂ - မေးခွန်းအဆင့်များ -->
+        <div id="question-section" class="hidden-section">
+            <div class="icon-box" id="step-icon">🧸</div>
+            
+            <h1 id="question-text">ပြန်ချစ်ဖို့တော့ ပြန်စဉ်းစားပေးလား... 💖</h1>
+            
+            <div class="btn-group" id="buttons-container">
+                <button class="btn-yes" onclick="nextStep()">Yes</button>
+                <button class="btn-no" id="btn-no" onclick="clickNoButton()">No</button>
+            </div>
+        </div>
+
+        <!-- အပိုင်း ၃ - အဆုံးသတ် အချစ်စာလွှာ -->
+        <div class="letter-content" id="love-letter">
+            <h3 style="color: #ff4757; text-align: center; margin-top: 0;">မကျော်ပဲဖတ်ပေးပါနော်... 💌</h3>
+            <p>
+                မင်းစိတ်ဆိုးသွားမလားတော့မသိဘူး စိတ်ဆိုးသွားရင်လည်းတောင်းပန်ပါတယ်နော် မင်းကိုချစ်မိတာတော့မင်းလည်းသိမှာပါ ငါမပြောရဲဘူး မင်းသဘောပါငါက<br><br>
+                မင်းလက်မခံနိုင်ဘူးဆိုရင်လည်း အရင်လိုပဲမင်းရဲ့လှပတဲ့အပြုံးလေးတွေနဲ့နေပေးပါနော်<br><br>
+                <strong style="display: block; text-align: center; color: #ff4757; font-size: 16px; margin-top: 10px;">love you so much ❤️</strong>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        let currentStep = 1;
+        let noCount = 0;
+
+        const questions = [
+            "ပြန်ချစ်ဖို့တော့ ပြန်စဉ်းစားပေးလား... 💖",
+            "တကယ် အဖြေက အဲ့လိုသေချာတာလား... 🥺",
+            "တကယ်ကြီး အဖြေပြန်ပေးလိုက်တာလား... 😳"
+        ];
+
+        const noMessages = [
+            "မဖြစ်နိုင်မှန်း သိပါတယ်... မင်းမချစ်နိုင်ရင်တောင် နည်းနည်းလေး စဉ်းစားပေးပါနော် 🥺",
+            "တကယ်ကြီး မချစ်နိုင်ဘူးလားဟင်... နောက်ဆုံးအနေနဲ့ စဉ်းစားပေးပါဦးနော် 😭",
+            "တောင်းပန်ပါတယ်... No လို့တော့ လုံးဝမရွေးခိုင်းပါနဲ့တော့နော်... 💔"
+        ];
+
+        const icons = ["🧸", "🌸", "✨"];
+        const sadIcons = ["🥺", "💧", "💔"];
+
+        function goToIntro() {
+            document.getElementById("welcome-section").style.display = "none";
+            document.getElementById("intro-section").style.display = "block";
+        }
+
+        function startQuestions() {
+            document.getElementById("intro-section").style.display = "none";
+            document.getElementById("question-section").style.display = "block";
+        }
+
+        function nextStep() {
+            currentStep++;
+            if (currentStep <= 3) {
+                document.getElementById("question-text").innerText = questions[currentStep - 1];
+                document.getElementById("step-icon").innerText = icons[currentStep - 1];
+            } else {
+                document.getElementById("question-section").style.display = "none";
+                document.getElementById("love-letter").style.display = "block";
+            }
+        }
+
+        function clickNoButton() {
+            const btnNo = document.getElementById("btn-no");
+
+            if (noCount < noMessages.length - 1) {
+                document.getElementById("question-text").innerText = noMessages[noCount];
+                document.getElementById("step-icon").innerText = sadIcons[noCount];
+                noCount++;
+            } else {
+                document.getElementById("question-text").innerText = noMessages[noMessages.length - 1];
+                document.getElementById("step-icon").innerText = sadIcons[sadIcons.length - 1];
+                
+                btnNo.onmouseover = moveNoButton;
+                btnNo.onclick = moveNoButton;
+                moveNoButton();
+            }
+        }
+
+        function moveNoButton() {
+            const btnNo = document.getElementById("btn-no");
+            const x = Math.random() * 160 - 80;
+            const y = Math.random() * 160 - 80;
+            btnNo.style.transform = `translate(${x}px, ${y}px)`;
+        }
+    </script>
+
+</body>
+</html>
